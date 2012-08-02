@@ -16,17 +16,24 @@
 	</head>
 	<body>
 		<header>
-			<hgroup>
-				<h1>Create new tag</h1>
-			</hgroup>
+			<h1>Create new tag</h1>
 		</header>
 		<form action="#" method="post">
 			<fieldset>
 				<legend>Describe the Car</legend>
 				<ul>
-					<li><label for="make">Make: </label><input type="text" id="make" /></li>
+					<li><label for="make">Make: </label><input type="text" autofocus id="make" /></li>
 					<li><label for="model">Model: </label><input type="text" id="model" /></li>
 					<li><label for="year">Year: </label><input type="number" value="2012" id="year" /></li>
+					<li><label for="doors">Number of Doors</label><br/><input type="range" min="0" max="5" value="0" step="1" name="doors" list="Doors">
+						<datalist id="doors">
+							<option value="0">
+							<option value="+2">
+							<option value="+3">
+							<option value="+4">
+							<option value="+5">
+						</datalist>
+					</li>
 					<li>
 						<label for="color">Color: </label>
 						<select id="color">
@@ -41,25 +48,27 @@
 					</li>
 					<li>What makes it stand out?
 						<ul>
-							<li><input type="checkbox" value="Custom" id="custom" /><label for="custom">Custom paint or decals</label></li>
-							<li><input type="checkbox" value="Sound" id="sound" /><label for="sound">Top notch sound system</label></li>
-							<li><input type="checkbox" value="Fast" id="fast" /><label for="fast">Crazy fast engine</label></li>
-							<li><input type="checkbox" value="Rims" id="rims" /><label for="rims">Really nice rims</label></li>
-						</ul>
-					<li>What's the condition like?
-						<ul>
-							<li><input type="radio" checked value="Amazing" id="amazing" name="condition" /><label for="amazing">Amazing</label></li>
-							<li><input type="radio" value="Not" id="not" name="condition" /><label for="not">Not so amazing</label></li>
-							<li><input type="radio" value="Rubbish" id="rubbish" name="condition" /><label for="rubbish">Rubbish</label></li>
+							<li><input type="checkbox" value="Custom" id="custom" /><label for="custom"> Custom paint or decals</label></li>
+							<li><input type="checkbox" value="Sound" id="sound" /><label for="sound"> Top notch sound system</label></li>
+							<li><input type="checkbox" value="Fast" id="fast" /><label for="fast"> Crazy fast engine</label></li>
+							<li><input type="checkbox" value="Rims" id="rims" /><label for="rims"> Really nice rims</label></li>
 						</ul>
 					</li>
+					<li>What's the condition like?
+						<ul>
+							<li><input type="radio" checked value="Amazing" id="amazing" name="condition" /><label for="amazing"> Amazing</label></li>
+							<li><input type="radio" value="Not" id="not" name="condition" /><label for="not"> Not so amazing</label></li>
+							<li><input type="radio" value="Rubbish" id="rubbish" name="condition" /><label for="rubbish"> Rubbish</label></li>
+						</ul>
+					</li>
+					<li><label for="describe">Describe the car in your own words. </label><textarea id="describe"></textarea></li>
+					<li><input type="hidden" value="true"/></li>
 				</ul>
-				
 			</fieldset>
 			<input type="submit" value="Save Car Info" />
 		</form>
 		<footer>
-			<h3>a <a href="www.pixelplunder.com">pixel plunder</a> app</h3>
+			<h3>a <a href="http://www.pixelplunder.com">pixel plunder</a> app</h3>
 		</footer>
 	</body>
 </html>

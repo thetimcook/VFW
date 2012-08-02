@@ -1,14 +1,25 @@
 html {
 	width: 320px;
-
+	background: #000;
 }
 body {
 	font-family: Helvetica, sans-serif;
 	font-size: 12px;
 	background: #d8d8d8;
-}
-.header{
+	border: 1px solid black;
+	border-radius: 6px;
+	margin: 0px;
 	
 }
+header{
+	text-align: center;
+}
+footer{
+	text-align: center;
+}
+fieldset{
+	margin: 12px;
+}
+
 
 
