@@ -7,12 +7,17 @@
 window.addEventListener("DOMContentLoaded", function(){
 	//alert(localStorage.value(0));
 	//getElementById Function
+	var selectColor = ["--Choose A Color--", "Black", "White", "Silver", "Red", "Blue", "Yellow", "Green"],
+		conditionValue,
+		holdValues
+	;
+	
 	function $(x){
 		var theElement = document.getElementById(x);
 		return theElement;
 	}
 	//Create select field element and populate with options.
-	function pickColor(){
+	function pickColor(selectColor){
 		var formTag = document.getElementsByTagName("form"),
 			selectLi = $('select'),
 			makeSelect = document.createElement('select');
@@ -33,15 +38,15 @@ window.addEventListener("DOMContentLoaded", function(){
 		var radios = document.forms[0].condition;
 		for (var i=0; i<radios.length; i++){
 			if(radios[i].checked){
-				conditionValue = radios[i].value;
+				var conditionValue = radios[i].value;
 			}
 		}
 	}
 	function getCheckboxValue(){
 		var checkboxes = document.forms[0].days;
 		var holdValues = [];
-		for(i=0, j=checkboxes.length; i<j; i++){
-			if(checkboxes[i].checked){
+		for (var i=0, j=checkboxes.length; i<j; i++){
+			if(checkboxes[i].checked){ 
 				var checkedValue = checkboxes[i].value;
 				holdValues.push(checkedValue);
 			}
@@ -68,11 +73,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	//Variable defaults
-	var selectColor = ["--Choose A Color--", "Black", "White", "Silver", "Red", "Blue", "Yellow", "Green"],
-		conditionValue,
-		holdValues
-	;
-	pickColor();
+
+	pickColor(selectColor);
 	
 	//Set link and submit click events
 	/*
@@ -81,7 +83,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal); */
 	var save = $('submit');
-	save.addEventListener("click", storeData);
+	save.addEventListener("click", storeData());
 });
 
 
