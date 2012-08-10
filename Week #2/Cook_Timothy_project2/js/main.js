@@ -16,6 +16,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var theElement = document.getElementById(x);
 		return theElement;
 	}
+	
 	//Create select field element and populate with options.
 	function pickColor(selectColor){
 		var formTag = document.getElementsByTagName("form"),
@@ -41,6 +42,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				var conditionValue = radios[i].value;
 			}
 		}
+		return conditionValue;
 	}
 	function getCheckboxValue(){
 		var checkboxes = document.forms[0].days;
@@ -51,21 +53,22 @@ window.addEventListener("DOMContentLoaded", function(){
 				holdValues.push(checkedValue);
 			}
 		}
+		return holdValues;
 	}	
 	function storeData() {
 		var id				= Math.floor(Math.random()*1000000);
 		//Gather all form field values and store in an object.
 		//Object properties contain array with form label and input values.
-		getSelectedRadio();
-		getCheckboxValue();
+		var display = getSelectedRadio();
+		var condition = getCheckboxValue();
 		var car				= {};
 			car.make 		= ["Make:", $('make').value];
 			car.model		= ["Model:", $('model').value];
 			car.year		= ["Year:", $('year').value];
 			car.doors		= ["Number of doors:", $('doors').value];
-			car.color 		= ["Color:", $('colors').value];
-			car.display		= ["What makes it stand out?", holdValues];
-			car.condition	= ["What's the condition like?", conditionValue];
+			car.colors 		= ["Color:", $('colors').value];
+			car.display		= ["What makes it stand out?", display];
+			car.condition	= ["What's the condition like?", condition];
 			car.discribe	= ["Discribe the car in your own words.", $('discribe').value];
 		// Save data to local storage: Use Strinify to convert our object to a sting.
 		localStorage.setItem(id, JSON.stringify(car));
@@ -82,7 +85,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	displayLink.addEventListener("click", getData);
 	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal); */
-	var save = $('submit');
+	var save = document.getElementById('submit');
 	save.addEventListener("click", storeData());
 });
 
