@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	function $(x){
 		var theElement = document.getElementById(x);
 		return theElement;
-	}
+	};
 	//Create select field element and populate with options.
 	function pickColor(){
 		var formTag = document.getElementsByTagName("form"),
@@ -25,47 +25,52 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeSelect.appendChild(makeOption);
 		}
 		selectLi.appendChild(makeSelect);
-	}
+	};
 	
 	// Find value of selected radio button.
-/*	function getSelectedRadio(){
+
+	function getSelectedRadio(){
 		var radios = document.forms[0].condition;
-		for (var i=0, i<radios.length; i++){
+		for (var i=0; i<radios.length; i++){
 			if(radios[i].checked){
 				conditionValue = radios[i].value;
 			}
 		}
-	}
-	
+	};
 	function getCheckboxValue(){
-		if($('display').checked){
-			displayValue
+		var checkboxes = document.forms[0].days;
+		var holdValues = [];
+		for(i=0, j=checkboxes.length; i<j; i++){
+			if(checkboxes[i].checked){
+				var checkedValue = checkboxes[i].value;
+				holdValues.push(checkedValue);
+			}
 		}
-	}
-	*/
+	};	
 	function storeData() {
 		var id				= Math.floor(Math.random()*1000000);
 		//Gather all form field values and store in an object.
 		//Object properties contain array with form label and input values.
 		getSelectedRadio();
-	//	getCheckboxValue();
+		getCheckboxValue();
 		var car				= {};
 			car.make 		= ["Make:", $('make').value];
 			car.model		= ["Model:", $('model').value];
 			car.year		= ["Year:", $('year').value];
 			car.doors		= ["Number of doors:", $('doors').value];
-			car.color 		= ["Color:", $('color').value];
-			//car.display		= ["What makes it stand out?", displayValue];
-			//car.condition	= ["What's the condition like?", conditionValue];
+			car.color 		= ["Color:", $('colors').value];
+			car.display		= ["What makes it stand out?", holdValues];
+			car.condition	= ["What's the condition like?", conditionValue];
 			car.discribe	= ["Discribe the car in your own words.", $('discribe').value];
 		// Save data to local storage: Use Strinify to convert our object to a sting.
 		localStorage.setItem(id, JSON.stringify(car));
 		alert("Car Tagged!");
-	}
+	};
 	
 	//Variable defaults
 	var selectColor = ["--Choose A Color--", "Black", "White", "Silver", "Red", "Blue", "Yellow", "Green"],
-		conditionValue
+		conditionValue,
+		holdValues
 	;
 	pickColor();
 	
