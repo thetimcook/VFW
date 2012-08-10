@@ -12,7 +12,6 @@
 		<title>VFW Project #1</title>
 		
 		<link href="css/styles.css" rel="stylesheet" type="text/css" />
-		<script src="js/main.js" type="text/javascript"> </script>
 	</head>
 	<body>
 		<header>
@@ -23,13 +22,15 @@
 			<a href="#" id="displayLink">Display Data</a>
 			<a href="additem.html" id="addNew" style="display:none;">Tag New Car</a>
 		</nav>	
-		<form action="#" method="post">
+		<form action="#" method="post" id="carForm" />
 			<fieldset>
 				<legend>Describe the Car</legend>
-				<ul>
-					<li><label for="make">Make: </label><input type="text" autofocus id="make" /></li>
-					<li><label for="model">Model: </label><input type="text" id="model" /></li>
-					<li><label for="year">Year: </label><input type="date" value="2012" id="year" /></li>
+				<span>* fields are required.</span>
+				<ul id="errors"></ul>
+				<ul id="newCarTag">
+					<li><label for="make">*Make: </label><input type="text" autofocus id="make" /></li>
+					<li><label for="model">*Model: </label><input type="text" id="model" /></li>
+					<li><label for="year">*Year: </label><input type="number" value="2012" id="year" /></li>
 					<li><label for="doors">Number of Doors</label><br/><input type="range" min="0" max="5" value="0" step="1" name="doors" list="Doors" />
 						<datalist id="doors">
 							<option value="0"/>
@@ -50,7 +51,7 @@
 							<option value="Green">Green</option>
 						</select>
 					</li>	-->
-					<li>What makes it stand out?
+					<li><label for="display">What makes it stand out? </label>
 						<ul>
 							<li><input type="checkbox" value="Custom" id="custom" /><label for="custom"> Custom paint or decals</label></li>
 							<li><input type="checkbox" value="Sound" id="sound" /><label for="sound"> Top notch sound system</label></li>
@@ -58,7 +59,7 @@
 							<li><input type="checkbox" value="Rims" id="rims" /><label for="rims"> Really nice rims</label></li>
 						</ul>
 					</li>
-					<li>What's the condition like?
+					<li><label for="condition">What's the condition like? </label>
 						<ul>
 							<li><input type="radio" checked value="Amazing" id="amazing" name="condition" /><label for="amazing"> Amazing</label></li>
 							<li><input type="radio" value="Not" id="not" name="condition" /><label for="not"> Not so amazing</label></li>
