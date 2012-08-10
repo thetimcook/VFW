@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	function $(x){
 		var theElement = document.getElementById(x);
 		return theElement;
-	};
+	}
 	//Create select field element and populate with options.
 	function pickColor(){
 		var formTag = document.getElementsByTagName("form"),
@@ -25,7 +25,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			makeSelect.appendChild(makeOption);
 		}
 		selectLi.appendChild(makeSelect);
-	};
+	}
 	
 	// Find value of selected radio button.
 
@@ -36,7 +36,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				conditionValue = radios[i].value;
 			}
 		}
-	};
+	}
 	function getCheckboxValue(){
 		var checkboxes = document.forms[0].days;
 		var holdValues = [];
@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", function(){
 				holdValues.push(checkedValue);
 			}
 		}
-	};	
+	}	
 	function storeData() {
 		var id				= Math.floor(Math.random()*1000000);
 		//Gather all form field values and store in an object.
@@ -65,7 +65,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		// Save data to local storage: Use Strinify to convert our object to a sting.
 		localStorage.setItem(id, JSON.stringify(car));
 		alert("Car Tagged!");
-	};
+	}
 	
 	//Variable defaults
 	var selectColor = ["--Choose A Color--", "Black", "White", "Silver", "Red", "Blue", "Yellow", "Green"],
