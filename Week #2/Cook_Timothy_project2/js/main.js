@@ -5,7 +5,6 @@
 */
 //wait until the DOM is ready
 window.addEventListener("DOMContentLoaded", function(){
-	//alert(localStorage.value(0));
 	//getElementById Function
 	var selectColor = ["--Choose A Color--", "Black", "White", "Silver", "Red", "Blue", "Yellow", "Green"],
 		conditionValue,
@@ -20,7 +19,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	//Create select field element and populate with options.
 	function pickColor(selectColor){
 		var formTag = document.getElementsByTagName("form"),
-			selectLi = $('select'),
+			selectLi = $('select');
 			makeSelect = document.createElement('select');
 			makeSelect.setAttribute("id", "colors");
 		for (var i=0, j=selectColor.length; i<j; i++){
@@ -33,6 +32,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(makeSelect);
 	}
 	
+
 	// Find value of selected radio button.
 
 	function getSelectedRadio(){
@@ -75,15 +75,41 @@ window.addEventListener("DOMContentLoaded", function(){
 		alert("Car Tagged!");
 	}
 	
+	function getData(){
+		//Write Data from local storage to the browser.
+		var makeDiv = document.createElement('div');
+		makeDiv.setAttribute("id", "cars");
+		var makeList = document.createElement('ul');
+		makeDiv.appendChild(makeList);
+		document.body.appendChild(makeDiv);
+		for (var i=0, len=localStorage.length; i<len; i++){
+			var makeLi = document.createElement('li');
+			makeList.appendChild(makeLi);
+			var key = localStorage.key(i);
+			var value = localStorage.getItem(key);
+			//Convert the string from local storage value back to an object.
+			var obj = JSON.parse(value);
+			var makeSubList = document.createElement('ul');
+			makeLi.appendChild(makeSubList);
+			for (var n in obj) {
+				var makeSubLi = document.createElement('li');
+				makeSubList.appendChild(makeSubLi);
+				var optSubText = obj[n][0]+" "+obj[n][1];
+				makeSubLi.innerHTML = optSubText;
+			}
+		}
+	}
+		
 	//Variable defaults
 
 	pickColor(selectColor);
+	getData();
 	
 	//Set link and submit click events
-	/*
+	
 	var displayLink = $('displayLink');
 	displayLink.addEventListener("click", getData);
-	var clearLink = $('clear');
+/*	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal); */
 	var save = document.getElementById('submit');
 	save.addEventListener("click", storeData());
