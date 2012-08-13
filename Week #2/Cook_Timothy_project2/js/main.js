@@ -54,7 +54,29 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 		return holdValues;
-	}	
+	}
+	
+	function toggleControls(n) {
+		switch(n) {
+			case "on":
+				$('contactForm').style.display = "none";
+				$('clear').style.display = "inline";
+				$('displayLink').style.display = "none";
+				$('addNew').style.display = "inline";
+				break;
+			case "off":
+				$('contactForm').style.display = "block";
+				$('clear').style.display = "inline";
+				$('displayLink').style.display = "inline";
+				$('addNew').style.display = "none";
+				$('cars').style.display = "none";		
+				break;
+			default:
+				return false;
+			
+		}
+	}
+	
 	function storeData() {
 		var id				= Math.floor(Math.random()*1000000);
 		//Gather all form field values and store in an object.
@@ -76,12 +98,14 @@ window.addEventListener("DOMContentLoaded", function(){
 	}
 	
 	function getData(){
+		toggleControls("on");
 		//Write Data from local storage to the browser.
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "cars");
 		var makeList = document.createElement('ul');
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
+		$('cars').style.display = "block";		
 		for (var i=0, len=localStorage.length; i<len; i++){
 			var makeLi = document.createElement('li');
 			makeList.appendChild(makeLi);
@@ -108,7 +132,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	//Set link and submit click events
 	
 	var displayLink = $('displayLink');
-	displayLink.addEventListener("click", getData);
+	displayLink.addEventListener("click", getData());
 /*	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal); */
 	var save = document.getElementById('submit');
