@@ -59,13 +59,13 @@ window.addEventListener("DOMContentLoaded", function(){
 	function toggleControls(n) {
 		switch(n) {
 			case "on":
-				$('contactForm').style.display = "none";
+				$('carForm').style.display = "none";
 				$('clear').style.display = "inline";
 				$('displayLink').style.display = "none";
 				$('addNew').style.display = "inline";
 				break;
 			case "off":
-				$('contactForm').style.display = "block";
+				$('carForm').style.display = "block";
 				$('clear').style.display = "inline";
 				$('displayLink').style.display = "inline";
 				$('addNew').style.display = "none";
@@ -91,7 +91,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			car.colors 		= ["Color:", $('colors').value];
 			car.display		= ["What makes it stand out?", display];
 			car.condition	= ["What's the condition like?", condition];
-			car.discribe	= ["Discribe the car in your own words.", $('discribe').value];
+			car.discribe	= ["Describe the car in your own words.", $('describe').value];
 		// Save data to local storage: Use Strinify to convert our object to a sting.
 		localStorage.setItem(id, JSON.stringify(car));
 		alert("Car Tagged!");
@@ -99,6 +99,9 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function getData(){
 		toggleControls("on");
+		if(localStorage.length === 0) {
+			alert("There are no cars in your Garage.");
+		}
 		//Write Data from local storage to the browser.
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "cars");
@@ -123,20 +126,29 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 	}
-		
+	
+	function clearLocal() {
+		if (localStorage.length === 0) {
+			alert("No cars to clear.")
+		} else {
+			localStorage.clear();
+			alert("All cars are deleted!");
+			window.location.reload();
+			return false;
+		}
+	}
 	//Variable defaults
 
 	pickColor(selectColor);
-	getData();
 	
 	//Set link and submit click events
 	
 	var displayLink = $('displayLink');
-	displayLink.addEventListener("click", getData());
-/*	var clearLink = $('clear');
-	clearLink.addEventListener("click", clearLocal); */
+	displayLink.addEventListener("click", getData);
+	var clearLink = $('clear');
+	clearLink.addEventListener("click", clearLocal);
 	var save = document.getElementById('submit');
-	save.addEventListener("click", storeData());
+	save.addEventListener("click", storeData);
 });
 
 

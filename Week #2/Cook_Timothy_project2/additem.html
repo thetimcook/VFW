@@ -31,7 +31,7 @@
 					<li><label for="make">*Make: </label><input type="text" autofocus id="make" /></li>
 					<li><label for="model">*Model: </label><input type="text" id="model" /></li>
 					<li><label for="year">*Year: </label><input type="number" value="2012" id="year" /></li>
-					<li><label for="doors">Number of Doors</label><br/><input type="range" min="0" max="5" value="0" step="1" name="doors" list="Doors" />
+					<li><label for="doors">Number of Doors</label><br/><input type="range" id="doors" min="0" max="5" value="0" step="1" name="doors" list="Doors" />
 						<datalist id="doors">
 							<option value="0"/>
 							<option value="+2"/>
@@ -64,7 +64,7 @@
 							<li><input type="radio" checked value="Amazing" id="amazing" name="condition" /><label for="amazing"> Amazing</label></li>
 							<li><input type="radio" value="Not" id="not" name="condition" /><label for="not"> Not so amazing</label></li>
 							<li><input type="radio" value="Rubbish" id="rubbish" name="condition" /><label for="rubbish"> Rubbish</label></li>
-						</ul>
+						</ul>  
 					</li>
 					<li><label for="describe">Describe the car in your own words. </label><textarea id="describe"></textarea></li>
 					<li><input type="hidden" value="true"/></li>
