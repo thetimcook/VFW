@@ -261,12 +261,6 @@ window.addEventListener("DOMContentLoaded", function(){
 			getYear.style.border = "1px solid red";
 			messageAry.push(yearError);
 		}
-		//Color Validation
-		if (getColor=="--Choose A Color--") {
-			var colorError = "Please choose a color.";
-			getColor.style.border = "1px solid red";
-			messageAry.push(colorError);
-		}
 		//If there are errors display them.
 		if (messageAry.length >= 1) {
 			for (var i=0, j=messageAry.length; i < j; i++) {
