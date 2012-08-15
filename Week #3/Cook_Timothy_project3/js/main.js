@@ -80,8 +80,12 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 	}
 	
-	function storeData() {
-		var id				= Math.floor(Math.random()*1000000);
+	function storeData(key) {
+		if (!key) {
+			var id				= Math.floor(Math.random()*1000000);
+		} else {
+			id = key;
+		}
 		//Gather all form field values and store in an object.
 		//Object properties contain array with form label and input values.
 		var condition = getSelectedRadio();
@@ -151,7 +155,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Car";
-		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.addEventListener("click", deleteItem);
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
@@ -189,9 +193,27 @@ window.addEventListener("DOMContentLoaded", function(){
 			}
 		}
 		$('describe').value = car.describe[1];
+		
+		//remove teh listener from input save button.
+		save.removeEventListener("click", storeData);
+		//Change submit button value to edit button
+		$('submit').value = "Edit Car Tag";
+		var editSubmit = $('submit');
+		//Save the key value established in this function as a property of the editSubmit event
+		//so we can use that value when we save the data we edited.
+		editSubmit.addEventListener("click", validate);
+		editSubmit.key = this.key;
 	}
-
-
+	function deleteItem() {
+		var ask = confirm("Are you sure you want to delete this car.");
+		if (ask) {
+			localStorage.removeItem(this.key);
+			alert("Car was deleted!");
+			window.location.reload();
+		} else {
+			alert("Car was not deleted!");
+		}
+	}
 	
 	function clearLocal() {
 		if (localStorage.length === 0) {
@@ -203,8 +225,65 @@ window.addEventListener("DOMContentLoaded", function(){
 			return false;
 		}
 	}
-	//Variable defaults
+	
+	function validate(e) {
+		//Define elements you want to check
+		var getMake = $('make');
+		var getModel = $('model');
+		var getYear = $('year');
+		var getColor = $('colors');
+		
+		//reset error messages
+		errMsg.innerHTML = "";
+		getMake.style.border = "none";
+		getModel.style.border = "none";
+		getYear.style.border = "none";
+		getColor.style.border = "none";
 
+		//get error messages
+		var messageAry  = [];
+		//Make Validation
+		if (getMake.value === "") {
+			var makeError = "Please enter a car make."
+			getMake.style.border = "1px solid red";
+			messageAry.push(makeError);
+		}
+		//Model Validation
+		if (getModel.value === "") {
+			var modelError = "Please enter a car model."
+			getModel.style.border = "1px solid red";
+			messageAry.push(modelError);
+		}
+		//Year Validation
+		var re = /^\d{4}$/;
+		if (!re.exec(getYear.value)) {
+			var yearError = "Please enter a valid year.";
+			getYear.style.border = "1px solid red";
+			messageAry.push(yearError);
+		}
+		//Color Validation
+		if (getColor=="--Choose A Color--") {
+			var colorError = "Please choose a color.";
+			getColor.style.border = "1px solid red";
+			messageAry.push(colorError);
+		}
+		//If there are errors display them.
+		if (messageAry.length >= 1) {
+			for (var i=0, j=messageAry.length; i < j; i++) {
+				var txt = document.createElement('li');
+				txt.innerHTML = messageAry[i];
+				errMsg.appendChild(txt);
+			}
+			e.preventDefault();
+			return false;
+		} else {
+			//if all is ok save data
+			storeData(this.key);
+		}
+
+	}
+	//Variable defaults
+	var errMsg = $('errors');
 	pickColor(selectColor);
 	
 	//Set link and submit click events
@@ -214,7 +293,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal);
 	var save = document.getElementById('submit');
-	save.addEventListener("click", storeData);
+	save.addEventListener("click", validate);
 });
 
 
