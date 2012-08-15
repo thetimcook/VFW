@@ -1,6 +1,6 @@
 /*	main.js
 	Timothy Cook
-	Project 2
+	Project 3
 	VFW Full Sail
 */
 
@@ -114,6 +114,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		$('cars').style.display = "block";		
 		for (var i=0, len=localStorage.length; i<len; i++){
 			var makeLi = document.createElement('li');
+			var linksLi = document.createElement('li');
 			makeList.appendChild(makeLi);
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
@@ -126,8 +127,33 @@ window.addEventListener("DOMContentLoaded", function(){
 				makeSubList.appendChild(makeSubLi);
 				var optSubText = obj[n][0]+" "+obj[n][1];
 				makeSubLi.innerHTML = optSubText;
+				makeSubList.appendChild(linksLi);
 			}
+			makeItemLinks(localStorage.key(i), linksLi); //Create edit and delete buttons
 		}
+	}
+	//Create the edit and delete links for each item
+	function makeItemLinks(key, linksLi) {
+		//add edit single item link
+		var editLink = document.createElement('a');
+		editLink.href = "#";
+		editLink.key = key;
+		var editText = "Edit Car";
+		//editLink.addEventListener("click", editItem);
+		editLink.innerHTML = editText;
+		linksLi.appendChild(editLink);
+		
+		var breakTag = document.createElement('br');
+		linksLi.appendChild(breakTag);
+		
+		//add delete single item link
+		var deleteLink = document.createElement('a');
+		deleteLink.href = "#";
+		deleteLink.key = key;
+		var deleteText = "Delete Car";
+		//deleteLink.addEventListener("click", deleteItem);
+		deleteLink.innerHTML = deleteText;
+		linksLi.appendChild(deleteLink);
 	}
 	
 	function clearLocal() {

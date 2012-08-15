@@ -1,0 +1,95 @@
+html {
+	background: #000;
+}
+body {
+	font-family: Helvetica, sans-serif;
+	font-size: 12px;
+	background: #fff;
+	border-radius: 8px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0px;
+	width: 320px;
+	height: auto;
+}
+header{
+	text-align: center;
+	margin: 0px;
+	border-top: 4px #0096ff solid;
+	background: -webkit-linear-gradient(#888888 0%, #515151 100%);
+	box-shadow: inset 0px -1px 8px rgba(199,199,199,0.5);
+	padding: 0px 0px 12px 0px;
+	height: 48px;
+}
+h1 {
+	color: #f2f2f2;
+	text-shadow: 0px -1.6px 1px rgba(0,0,0,0.5);
+	padding: inherit;
+}
+nav {
+	text-align: center;
+	padding: 2px;
+}
+a {
+	text-decoration: none;
+}
+footer{
+	text-align: center;
+	padding: 2px;
+}
+legend {
+	background: #555;
+	color: white;
+	padding: 4px 8px 4px 24px;
+	text-align: inherit;
+	margin: 0px 0px 0px -24px;
+}
+fieldset{
+	width: 280px;
+	margin: 12px auto 12px auto;
+	border-style: none;
+	background: #c8c8c8;
+}
+li {
+	margin: 2px auto 4px auto;
+}
+input#make {
+	display: block;
+	width: 264px;
+}
+input#model {
+	display: block;
+	width: 264px;
+}
+input#year {
+	display: block;
+	width: 264px;
+}
+ul {
+	list-style-type: none;
+	padding: 0px 2px 0px 2px;
+}
+textarea {
+	resize: none;
+	width: 268px;
+	height: 60px;
+}
+input#submit {
+	background: -webkit-linear-gradient(#86c0ff 0%, #127dff 100%);
+	border: 1px solid #094dc2;
+	font-size: large;
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: 298px;
+	height: 42px;
+	border-radius: 0px;
+}
+
+
+
+
+
+
+
