@@ -47,7 +47,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		return conditionValue;
 	}
 	function getCheckboxValue(){
-		var checkboxes = document.forms[0].days;
+		var checkboxes = document.forms[0].display;
 		var holdValues = [];
 		for (var i=0, j=checkboxes.length; i<j; i++){
 			if(checkboxes[i].checked){ 
@@ -84,17 +84,17 @@ window.addEventListener("DOMContentLoaded", function(){
 		var id				= Math.floor(Math.random()*1000000);
 		//Gather all form field values and store in an object.
 		//Object properties contain array with form label and input values.
-		var display = getSelectedRadio();
-		var condition = getCheckboxValue();
+		var condition = getSelectedRadio();
+		var display = getCheckboxValue();
 		var car				= {};
-			car.make 		= ["Make:", $('make').value];
-			car.model		= ["Model:", $('model').value];
-			car.year		= ["Year:", $('year').value];
-			car.doors		= ["Number of doors:", $('doors').value];
-			car.colors 		= ["Color:", $('colors').value];
-			car.display		= ["What makes it stand out?", display];
-			car.condition	= ["What's the condition like?", condition];
-			car.discribe	= ["Describe the car in your own words.", $('describe').value];
+			car.make 		= ["Make: ", $('make').value];
+			car.model		= ["Model: ", $('model').value];
+			car.year		= ["Year: ", $('year').value];
+			car.doors		= ["Number of doors: ", $('doors').value];
+			car.colors 		= ["Color: ", $('colors').value];
+			car.display		= ["What makes it stand out? ", display];
+			car.condition	= ["Condition: ", condition];
+			car.describe	= ["Describe the car in your own words. ", $('describe').value];
 		// Save data to local storage: Use Strinify to convert our object to a sting.
 		localStorage.setItem(id, JSON.stringify(car));
 		alert("Car Tagged!");
@@ -139,7 +139,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		editLink.href = "#";
 		editLink.key = key;
 		var editText = "Edit Car";
-		//editLink.addEventListener("click", editItem);
+		editLink.addEventListener("click", editCar);
 		editLink.innerHTML = editText;
 		linksLi.appendChild(editLink);
 		
@@ -155,6 +155,43 @@ window.addEventListener("DOMContentLoaded", function(){
 		deleteLink.innerHTML = deleteText;
 		linksLi.appendChild(deleteLink);
 	}
+
+
+	
+	function editCar() {
+		//Grab the data from our item from local storage
+		var value = localStorage.getItem(this.key);
+		var car = JSON.parse(value);
+		
+		//Show the form
+		toggleControls("off");
+		
+		//populate form fields with current values
+		$('make').value = car.make[1];
+		$('model').value = car.model[1];
+		$('year').value = car.year[1];
+		$('doors').value = car.doors[1];
+		$('colors').value = car.colors[1];
+
+		var checkboxes = document.forms[0].display;
+		for (var i=0; i<car.display[1].length; i++) {
+			document.getElementById(car.display[1][i]).setAttribute("checked", "checked");
+		}
+		
+		var radios = document.forms[0].condition;
+		for (var i=0; i<radios.length; i++) {
+			if (radios[i].value == "Amazing" && car.condition[1] == "Amazing"){
+				radios[i].setAttribute("checked", "checked");
+			} else if (radios[i].value == "Not so amazing" && car.condition[1] == "Not so amazing") {
+				radios[i].setAttribute("checked", "checked");
+			} else if (radios[i].value == "Rubbish" && car.condition[1] == "Rubbish") {
+				radios[i].setAttribute("checked", "checked");
+			}
+		}
+		$('describe').value = car.describe[1];
+	}
+
+
 	
 	function clearLocal() {
 		if (localStorage.length === 0) {
