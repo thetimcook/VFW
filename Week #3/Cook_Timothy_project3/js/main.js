@@ -112,7 +112,11 @@ window.addEventListener("DOMContentLoaded", function(){
 		//Write Data from local storage to the browser.
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "cars");
+		makeDiv.style.padding = "4px 8px 12px 8px";
+		makeDiv.style.margin = "8px";
+		makeDiv.style.background = "rgba(109, 174, 218, 1.0)";
 		var makeList = document.createElement('ul');
+		makeList.style.padding = "4px";
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
 		$('cars').style.display = "block";		
@@ -140,6 +144,9 @@ window.addEventListener("DOMContentLoaded", function(){
 	function makeItemLinks(key, linksLi) {
 		//add edit single item link
 		var editLink = document.createElement('a');
+		editLink.style.padding = "4px 8px 4px 14px";
+		editLink.style.background = "#fff";
+		editLink.style.margin = "12px 0px 0px -14px";
 		editLink.href = "#";
 		editLink.key = key;
 		var editText = "Edit Car";
@@ -147,11 +154,16 @@ window.addEventListener("DOMContentLoaded", function(){
 		editLink.innerHTML = editText;
 		linksLi.appendChild(editLink);
 		
+/*
 		var breakTag = document.createElement('br');
 		linksLi.appendChild(breakTag);
+*/
 		
 		//add delete single item link
-		var deleteLink = document.createElement('a');
+		var deleteLink = document.createElement('a')
+		deleteLink.style.padding = "4px 171px 4px 8px";
+		deleteLink.style.background = "#fff";
+		deleteLink.style.margin = "12px 0px 0px 0px";
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Car";

@@ -1,22 +1,21 @@
 html {
-	background: #000;
+	background-image: url("images/bg3.jpg");
 }
 body {
 	font-family: Helvetica, sans-serif;
 	font-size: 12px;
 	background: #fff;
 	border-radius: 8px;
-	margin-left: auto;
-	margin-right: auto;
-	margin-top: 0px;
+	margin: 0px auto 0px auto;
 	width: 320px;
-	height: auto;
+	min-height: 480px;
+	opacity: .95;
 }
 header{
 	text-align: center;
 	margin: 0px;
-	border-top: 4px #0096ff solid;
-	background: -webkit-linear-gradient(#888888 0%, #515151 100%);
+	border-top: 4px rgba(47, 126, 178, 1.0) solid;
+	background: -webkit-linear-gradient(rgba(98, 173, 217, 1.0) 0%, rgba(47, 126, 178, 1.0) 100%);
 	box-shadow: inset 0px -1px 8px rgba(199,199,199,0.5);
 	padding: 0px 0px 12px 0px;
 	height: 48px;
@@ -26,9 +25,20 @@ h1 {
 	text-shadow: 0px -1.6px 1px rgba(0,0,0,0.5);
 	padding: inherit;
 }
+h2 {
+	text-align: center;
+	padding: 16px;
+	font-size: 16pt;
+	color: rgba(98, 173, 217, 1.0);
+}
 nav {
 	text-align: center;
 	padding: 2px;
+}
+a#tag {
+	font-size: 30pt;
+	font-weight: bold;
+	color: rgba(47, 126, 178, 1.0);
 }
 a {
 	text-decoration: none;
@@ -36,9 +46,10 @@ a {
 footer{
 	text-align: center;
 	padding: 2px;
+	margin-top: 150px;
 }
 legend {
-	background: #555;
+	background: rgba(48, 127, 179, 1.0);
 	color: white;
 	padding: 4px 8px 4px 24px;
 	text-align: inherit;
@@ -48,7 +59,7 @@ fieldset{
 	width: 280px;
 	margin: 12px auto 12px auto;
 	border-style: none;
-	background: #c8c8c8;
+	background: rgba(109, 174, 218, 1.0);
 }
 li {
 	margin: 2px auto 4px auto;
@@ -74,21 +85,24 @@ textarea {
 	width: 268px;
 	height: 60px;
 }
+form {
+	padding: 0px 0px 12px 0px;
+}
 input#submit {
-	background: -webkit-linear-gradient(#86c0ff 0%, #127dff 100%);
-	border: 1px solid #094dc2;
+	background: -webkit-linear-gradient(rgba(98, 173, 217, 1.0) 0%, rgba(47, 126, 178, 1.0) 100%);
+	border: 1px solid rgba(47, 126, 178, 1.0);
 	font-size: large;
+	text-fill-color: #fff;
 	display: block;
 	text-align: center;
-	margin-left: auto;
-	margin-right: auto;
+	margin: 0px auto 0px auto;
 	width: 298px;
 	height: 42px;
 	border-radius: 0px;
 }
-
-
-
+#errors {
+	color: red;
+}
 
 
 
