@@ -72,17 +72,16 @@ window.addEventListener("DOMContentLoaded", function(){
 				$('clear').style.display = "inline";
 				$('displayLink').style.display = "inline";
 				$('addNew').style.display = "none";
-				$('cars').style.display = "none";		
+				$('cars').style.display = "none";
 				break;
 			default:
 				return false;
-			
 		}
 	}
 	
 	function storeData(key) {
 		if (!key) {
-			var id				= Math.floor(Math.random()*1000000);
+			var id			= Math.floor(Math.random()*1000000);
 		} else {
 			id = key;
 		}
@@ -112,14 +111,10 @@ window.addEventListener("DOMContentLoaded", function(){
 		//Write Data from local storage to the browser.
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "cars");
-		makeDiv.style.padding = "4px 8px 12px 8px";
-		makeDiv.style.margin = "8px";
-		makeDiv.style.background = "rgba(109, 174, 218, 1.0)";
 		var makeList = document.createElement('ul');
-		makeList.style.padding = "4px";
 		makeDiv.appendChild(makeList);
 		document.body.appendChild(makeDiv);
-		$('cars').style.display = "block";		
+		$('cars').style.display = "block";
 		for (var i=0, len=localStorage.length; i<len; i++){
 			var makeLi = document.createElement('li');
 			var linksLi = document.createElement('li');
@@ -137,16 +132,25 @@ window.addEventListener("DOMContentLoaded", function(){
 				makeSubLi.innerHTML = optSubText;
 				makeSubList.appendChild(linksLi);
 			}
+			var breakTag = document.createElement('br');
+			linksLi.appendChild(breakTag);
 			makeItemLinks(localStorage.key(i), linksLi); //Create edit and delete buttons
 		}
+		makeList.style.fontSize = "10pt";
+		makeList.style.margin = "8px";
+		makeList.style.background = "rgba(109, 174, 218, 1.0)";
+		makeList.style.padding = "8px 8px 12px 8px";
 	}
 	//Create the edit and delete links for each item
 	function makeItemLinks(key, linksLi) {
 		//add edit single item link
 		var editLink = document.createElement('a');
-		editLink.style.padding = "4px 8px 4px 14px";
+		editLink.style.border = "1px rgba(47, 126, 178, 1.0) solid";
+		editLink.style.color = "rgba(47, 126, 178, 1.0)";
+		editLink.style.fontWeight = "bold";
+		editLink.style.padding = "4px 27px 4px 27px";
 		editLink.style.background = "#fff";
-		editLink.style.margin = "12px 0px 0px -14px";
+		editLink.style.margin = "8px 29px 0px 7px";
 		editLink.href = "#";
 		editLink.key = key;
 		var editText = "Edit Car";
@@ -160,10 +164,13 @@ window.addEventListener("DOMContentLoaded", function(){
 */
 		
 		//add delete single item link
-		var deleteLink = document.createElement('a')
-		deleteLink.style.padding = "4px 171px 4px 8px";
+		var deleteLink = document.createElement('a');
+		deleteLink.style.border = "1px rgba(47, 126, 178, 1.0) solid";
+		deleteLink.style.color = "rgba(47, 126, 178, 1.0)";
+		deleteLink.style.fontWeight = "bold";
+		deleteLink.style.padding = "4px 20px 4px 20px";
 		deleteLink.style.background = "#fff";
-		deleteLink.style.margin = "12px 0px 0px 0px";
+		deleteLink.style.margin = "8px 0px 0px 29px";
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Car";
