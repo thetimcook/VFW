@@ -105,8 +105,8 @@ window.addEventListener("DOMContentLoaded", function(){
 	function getData(){
 		toggleControls("on");
 		if(localStorage.length === 0) {
-			alert("There are no cars in your Garage, so I went ahead and added a couple!");
 			autoFill();
+			alert("There are no cars in your Garage, so I went ahead and added a couple!");
 		}
 		
 		//Write Data from local storage to the browser.
@@ -129,6 +129,7 @@ window.addEventListener("DOMContentLoaded", function(){
 			var obj = JSON.parse(value);
 			var makeSubList = document.createElement('ul');
 			makeLi.appendChild(makeSubList);
+			getLogo(obj.make[1], makeSubList);
 			for (var n in obj) {
 				var makeSubLi = document.createElement('li');
 				makeSubList.appendChild(makeSubLi);
@@ -144,11 +145,19 @@ window.addEventListener("DOMContentLoaded", function(){
 			var breakTag = document.createElement('br');
 			linksLi.appendChild(breakTag);
 		}
-		makeDiv.style.margin = "0px 0px 8px 0px";
-		makeList.style.fontSize = "10pt";
-		makeList.style.margin = "8px 8px 0px 8px";
-		makeList.style.background = "rgba(109, 174, 218, 1.0)";
-		makeList.style.padding = "8px 8px 12px 8px";
+		makeDiv.style.margin		= "0px 0px 8px 0px";
+		makeList.style.fontSize		= "10pt";
+		makeList.style.margin		= "8px 8px 0px 8px";
+		makeList.style.background	= "rgba(109, 174, 218, 1.0)";
+		makeList.style.padding		= "8px 8px 12px 8px";
+	}
+	//Get logo for car make.
+	function getLogo(logo, makeSubList) {
+		var imageLi = document.createElement('li');
+		makeSubList.appendChild(imageLi);
+		var newImg = document.createElement('img');
+		var setSrc = newImg.setAttribute("src", "images/"+ logo +".jpg");
+		imageLi.appendChild(newImg);
 	}
 	
 	//Auto fill data
@@ -163,12 +172,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	function makeItemLinks(key, linksLi) {
 		//add edit single item link
 		var editLink = document.createElement('a');
-		editLink.style.border = "1px rgba(47, 126, 178, 1.0) solid";
-		editLink.style.color = "rgba(47, 126, 178, 1.0)";
-		editLink.style.fontWeight = "bold";
-		editLink.style.padding = "4px 27px 4px 27px";
-		editLink.style.background = "#fff";
-		editLink.style.margin = "8px 29px 8px 7px";
+		editLink.style.border		= "1px rgba(47, 126, 178, 1.0) solid";
+		editLink.style.color		= "rgba(47, 126, 178, 1.0)";
+		editLink.style.fontWeight	= "bold";
+		editLink.style.padding		= "4px 27px 4px 27px";
+		editLink.style.background	= "#fff";
+		editLink.style.margin		= "8px 29px 8px 7px";
 		editLink.href = "#";
 		editLink.key = key;
 		var editText = "Edit Car";
@@ -183,12 +192,12 @@ window.addEventListener("DOMContentLoaded", function(){
 		
 		//add delete single item link
 		var deleteLink = document.createElement('a');
-		deleteLink.style.border = "1px rgba(47, 126, 178, 1.0) solid";
-		deleteLink.style.color = "rgba(47, 126, 178, 1.0)";
+		deleteLink.style.border		= "1px rgba(47, 126, 178, 1.0) solid";
+		deleteLink.style.color		= "rgba(47, 126, 178, 1.0)";
 		deleteLink.style.fontWeight = "bold";
-		deleteLink.style.padding = "4px 20px 4px 20px";
-		deleteLink.style.background = "#fff";
-		deleteLink.style.margin = "8px 0px 8px 29px";
+		deleteLink.style.padding	= "4px 20px 4px 20px";
+		deleteLink.style.background	= "#fff";
+		deleteLink.style.margin		= "8px 0px 8px 29px";
 		deleteLink.href = "#";
 		deleteLink.key = key;
 		var deleteText = "Delete Car";
@@ -254,7 +263,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	
 	function clearLocal() {
 		if (localStorage.length === 0) {
-			alert("No cars to clear.")
+			alert("No cars to clear.");
 		} else {
 			localStorage.clear();
 			alert("All cars are deleted!");
@@ -281,13 +290,13 @@ window.addEventListener("DOMContentLoaded", function(){
 		var messageAry  = [];
 		//Make Validation
 		if (getMake.value === "") {
-			var makeError = "Please enter a car make."
+			var makeError = "Please enter a car make.";
 			getMake.style.border = "1px solid red";
 			messageAry.push(makeError);
 		}
 		//Model Validation
 		if (getModel.value === "") {
-			var modelError = "Please enter a car model."
+			var modelError = "Please enter a car model.";
 			getModel.style.border = "1px solid red";
 			messageAry.push(modelError);
 		}
@@ -323,7 +332,7 @@ window.addEventListener("DOMContentLoaded", function(){
 	displayLink.addEventListener("click", getData);
 	var clearLink = $('clear');
 	clearLink.addEventListener("click", clearLocal);
-	var save = document.getElementById('submit');
+	var save = $('submit');
 	save.addEventListener("click", validate);
 });
 

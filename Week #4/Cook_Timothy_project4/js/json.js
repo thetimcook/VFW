@@ -10,8 +10,8 @@ var json = {
 		"year": ["Year: ", "2009"],
 		"doors": ["Number of doors: ", "4"],
 		"colors": ["Color: ", "Red"],
-		"display": ["What makes it stand out? ", " Sound system"],
-		"condition": ["Condition: ", "Not so Amazing"],
+		"display": ["What makes it stand out? ", "Sound"],
+		"condition": ["Condition: ", "Not"],
 		"describe": ["Describe the car in your own words. ", "I like it much."]
 	},
 	"car2": {
@@ -20,7 +20,7 @@ var json = {
 		"year": ["Year: ", "2004"],
 		"doors": ["Number of doors: ", "4"],
 		"colors": ["Color: ", "Black"],
-		"display": ["What makes it stand out? ", " Fast engine"],
+		"display": ["What makes it stand out? ", "Fast"],
 		"condition": ["Condition: ", "Amazing"],
 		"describe": ["Describe the car in your own words. ", "I like it muchly."]
 	}
