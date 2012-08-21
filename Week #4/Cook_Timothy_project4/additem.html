@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="description" content="Project #1 for VFW at Full Sail University." />
+		<meta name="keywords" content="html, mobile development, full sail university, vfw" />
+		<meta name="robots" content="noindex, nofollow" />
+		<meta name="viewport" content="user-scalable=no, width=device-width" />
+<!-- 		<meta name="viewport" content="target-densitydpi=device-dpi" /> -->
+		
+		<title>VFW Project #1</title>
+		
+		<link href="css/styles.css" rel="stylesheet" type="text/css" />
+	</head>
+	<body>
+		<header>
+			<h1 id="headerBar">Create new tag</h1>
+		</header>
+		<nav>
+			<a href="#" id="clear">Clear Car Data</a><a> | </a>
+			<a href="#" id="displayLink">Display Data</a>
+			<a href="additem.html" id="addNew" style="display:none;">Tag New Car</a>
+		</nav>	
+		<form action="#" method="post" id="carForm">
+			<fieldset>
+				<legend>Describe the Car</legend>
+				<span>* fields are required.</span>
+				<ul id="errors"></ul>
+				<ul id="newCarTag">
+					<li><label for="make">*Make: </label><input type="text" autofocus id="make" /></li>
+					<li><label for="model">*Model: </label><input type="text" id="model" /></li>
+					<li><label for="year">*Year: </label><input type="number" value="2012" id="year" /></li>
+					<li><label for="doors">Number of Doors (2-5)</label><br/><input type="range" id="doors" min="0" max="5" value="0" step="1" name="doors" list="Doors" />
+						<datalist id="doors">
+							<option value="0"/>
+							<option value="+2"/>
+							<option value="+3"/>
+							<option value="+4"/>
+							<option value="+5"/>
+						</datalist>
+					</li>
+					<li id="select"><label for="colors">Color: </label><br /></li>
+					<!--	<select id="color">
+							<option value="Black">Black</option>
+							<option value="White">White</option>
+							<option value="Silver">Silver</option>
+							<option value="Red">Red</option>
+							<option value="Blue">Blue</option>
+							<option value="Yellow">Yellow</option>
+							<option value="Green">Green</option>
+						</select>
+					</li>	-->
+					<li><label for="display">What makes it stand out? </label>
+						<ul>
+							<li><input type="checkbox" value=" Custom paint or decals" id="Custom" name="display" /><label for="Custom"> Custom paint or decals</label></li>
+							<li><input type="checkbox" value=" Sound system" id="Sound" name="display" /><label for="Sound"> Top notch sound system</label></li>
+							<li><input type="checkbox" value=" Fast engine" id="Fast" name="display" /><label for="Fast"> Crazy fast engine</label></li>
+							<li><input type="checkbox" value=" Really nice rims" id="Rims" name="display" /><label for="Rims"> Really nice rims</label></li>
+						</ul>
+					</li>
+					<li><label for="condition">What's the condition like? </label>
+						<ul>
+							<li><input type="radio" checked value="Amazing" id="amazing" name="condition" /><label for="amazing"> Amazing</label></li>
+							<li><input type="radio" value="Not so Amazing" id="not" name="condition" /><label for="not"> Not so amazing</label></li>
+							<li><input type="radio" value="Rubbish" id="rubbish" name="condition" /><label for="rubbish"> Rubbish</label></li>
+						</ul>  
+					</li>
+					<li><label for="describe">Describe the car in your own words. </label><textarea id="describe"></textarea></li>
+					<li><input type="hidden" value="true"/></li>
+				</ul>
+			</fieldset>
+			<input type="submit" value="Save Car Info" id="submit" name="submit" />
+		</form>
+		<script src="js/json.js" type="text/javascript"></script>
+		<script src="js/main.js" type="text/javascript"></script>
+	</body>
+</html>
+

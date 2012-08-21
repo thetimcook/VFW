@@ -101,13 +101,14 @@ window.addEventListener("DOMContentLoaded", function(){
 		// Save data to local storage: Use Strinify to convert our object to a sting.
 		localStorage.setItem(id, JSON.stringify(car));
 		alert("Car Tagged!");
-	}
-	
+	}	
 	function getData(){
 		toggleControls("on");
 		if(localStorage.length === 0) {
-			alert("There are no cars in your Garage.");
+			alert("There are no cars in your Garage, so I went ahead and added a couple!");
+			autoFill();
 		}
+		
 		//Write Data from local storage to the browser.
 		var makeDiv = document.createElement('div');
 		makeDiv.setAttribute("id", "cars");
@@ -119,9 +120,9 @@ window.addEventListener("DOMContentLoaded", function(){
 			var makeLi = document.createElement('li');
 			var linksLi = document.createElement('li');
 			makeList.appendChild(makeLi);
-			makeLi.style.padding = "0px 0px 12px 0px"
+			makeLi.style.padding = "0px 0px 12px 0px";
 			makeLi.style.margin = "0px 0px 8px 0px";
-			makeLi.style.borderBottom = "1px white solid"
+			makeLi.style.borderBottom = "1px white solid";
 			var key = localStorage.key(i);
 			var value = localStorage.getItem(key);
 			//Convert the string from local storage value back to an object.
@@ -149,6 +150,15 @@ window.addEventListener("DOMContentLoaded", function(){
 		makeList.style.background = "rgba(109, 174, 218, 1.0)";
 		makeList.style.padding = "8px 8px 12px 8px";
 	}
+	
+	//Auto fill data
+	function autoFill() {
+		for (var n in json) {
+			var id = Math.floor(Math.random()*1000000);
+			localStorage.setItem(id, JSON.stringify(json[n]));
+		}
+	}
+	
 	//Create the edit and delete links for each item
 	function makeItemLinks(key, linksLi) {
 		//add edit single item link
@@ -213,7 +223,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		for (var i=0; i<radios.length; i++) {
 			if (radios[i].value == "Amazing" && car.condition[1] == "Amazing"){
 				radios[i].setAttribute("checked", "checked");
-			} else if (radios[i].value == "Not so amazing" && car.condition[1] == "Not so amazing") {
+			} else if (radios[i].value == "Not so Amazing" && car.condition[1] == "Not so Amazing") {
 				radios[i].setAttribute("checked", "checked");
 			} else if (radios[i].value == "Rubbish" && car.condition[1] == "Rubbish") {
 				radios[i].setAttribute("checked", "checked");
@@ -221,7 +231,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		}
 		$('describe').value = car.describe[1];
 		
-		//remove teh listener from input save button.
+		//remove the listener from input save button.
 		save.removeEventListener("click", storeData);
 		//Change submit button value to edit button
 		$('submit').value = "Edit Car Tag";
@@ -273,7 +283,6 @@ window.addEventListener("DOMContentLoaded", function(){
 		if (getMake.value === "") {
 			var makeError = "Please enter a car make."
 			getMake.style.border = "1px solid red";
-			
 			messageAry.push(makeError);
 		}
 		//Model Validation
