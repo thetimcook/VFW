@@ -34,7 +34,6 @@ window.addEventListener("DOMContentLoaded", function(){
 		selectLi.appendChild(makeSelect);
 	}
 	
-
 	// Find value of selected radio button.
 
 	function getSelectedRadio(){
@@ -339,6 +338,12 @@ window.addEventListener("DOMContentLoaded", function(){
 	clearLink.addEventListener("click", clearLocal);
 	var save = document.getElementById('submit');
 	save.addEventListener("click", validate);
+	
+	//Search
+	var search = $('searchBtn')
+	search.addEventListener("click", getSearch);
+	
+	
 });
 
 
