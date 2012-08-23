@@ -159,7 +159,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		var setSrc = newImg.setAttribute("src", "images/"+ logo +".jpg");
 		imageLi.appendChild(newImg);
 	}	
-
+	
 	
 	//Auto fill data
 
@@ -246,6 +246,7 @@ window.addEventListener("DOMContentLoaded", function(){
 		//remove teh listener from input save button.
 		save.removeEventListener("click", storeData);
 		//Change submit button value to edit button
+		$('headerBar').innerHTML = "Edit Car Tag";
 		$('submit').value = "Edit Car Tag";
 		var editSubmit = $('submit');
 		//Save the key value established in this function as a property of the editSubmit event
@@ -338,10 +339,6 @@ window.addEventListener("DOMContentLoaded", function(){
 	clearLink.addEventListener("click", clearLocal);
 	var save = document.getElementById('submit');
 	save.addEventListener("click", validate);
-	
-	//Search
-	var search = $('searchBtn')
-	search.addEventListener("click", getSearch);
 	
 	
 });
