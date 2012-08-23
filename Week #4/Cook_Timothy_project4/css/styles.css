@@ -109,6 +109,11 @@ input#submit {
 #errors {
 	color: red;
 }
+img {
+	text-align: center;
+	max-height: 50px;
+	max-width: 284px;
+}
 
 
 
